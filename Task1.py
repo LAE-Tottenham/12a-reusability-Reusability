@@ -1,11 +1,37 @@
 # Help! My code is too messy :( Please help me organise it and extract out the duplications.
 
 # Define your reusable functions here:
+def hypotenuse(a,b):
+    if a isnumeric():
+        import math
+        hyp=math.sqrt((float(a)**2)+(float(b)**2) )
+        return hyp
+    elif:
+        return("Your values are not numerical")
 # Make sure each function only does ONE thing!!!!!!!!!!!
 
 
 
 ###########################################
+def hypotenuse(a,b):
+    if a isnumeric():
+        import math
+        hyp=math.sqrt(a**2+b**2)
+        return hyp
+    elif:
+        return("Your values are not numerical")
+
+
+opp1 = float(input("Enter your first triangle's opposite side length: "))
+adj1 = float(input("Enter your first triangle's adjacent side length: "))
+hyp1= hypotenuse(opp1,adj1)
+opp2 = float(input("Enter your second triangle's opposite side length: "))
+adj2 = float(input("Enter your second triangle's adjacent side length: "))
+hyp2= hypotenuse(opp2,adj2)
+opp3 = hyp1
+adj3 = hyp2
+hyp3=hypotenuse(opp3,adj3)
+print(hyp3)
 
 def weird_calculation():
     # get the length and width of the first triangle from the user
@@ -39,8 +65,10 @@ print(weird_answer)
 # After you have written the reusable functions, answer the following:
 # Questions:
 # 1. What are the preconditions for your code not to break?
+I think the preconditions are that the values are numerical 
 # 2. Validate the user's input based on your preconditions.
 # 3. Why was it useful to use reusable components in this case? Please mention at least 2 reasons and don't forget to contextualise.
+Because you are doing the calculation of finding the hypotenuse three times and so using reusable components saves time and also makes the code neater and way way shorter
 
 # Further Tasks:
 # 1. Put your functions in seperate appropriate files and import them in.
