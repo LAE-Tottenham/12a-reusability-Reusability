@@ -1,6 +1,20 @@
 # Help! My code is too messy :( Please help me organise it and extract out the duplications.
 
 # Define your reusable functions here:
+def hyp():
+    opp = input("Enter your triangle's opposite side: ") 
+    while opp.isdigit() == False :
+        print("That is not a valid number.")
+        opp = input("Enter your triangle's opposite side: ")    
+    adj = input("Enter your triangle's adjacent side length: ")
+    while adj.isdigit() == False:
+        print("That is not a valid number.")
+        adj = input("Enter your triangle's adjacent side length: ")
+
+
+    import math
+    hyp1 = math.sqrt(int(opp)**2 + int(adj)**2)
+    return hyp1
 # Make sure each function only does ONE thing!!!!!!!!!!!
 
 
@@ -9,21 +23,13 @@
 
 def weird_calculation():
     # get the length and width of the first triangle from the user
-    opp1 = float(input("Enter your first triangle's opposite side length: "))
-    adj1 = float(input("Enter your first triangle's adjacent side length: "))
-
-    # work out the hyp
-    import math
-    hyp1 = math.sqrt(opp1**2 + adj1**2)
-
-    # get the length and width of the second triangle from the user
-    opp2 = float(input("Enter your second triangle's opposite side length: "))
-    adj2 = float(input("Enter your second triangle's adjacent side length: "))
-
-    # work out the hyp
-    import math
-    hyp2 = math.sqrt(opp2**2 + adj2**2)
-
+    count = 0
+    while count < 2:
+        if count == 0:
+            hyp1 = hyp()
+        else: 
+            hyp2 = hyp()
+        count = count + 1
     # create a third triangle with the hyp1 as the opp and hyp2 as the adj
     opp3 = hyp1
     adj3 = hyp2
