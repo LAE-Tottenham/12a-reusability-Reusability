@@ -5,6 +5,7 @@ import os, time
 # Help! I'm trying to make this cool bot but my code is too messy :( Please help me organise it into reusable components.
 
 # Define your reusable functions here:
+i really dont know im stuck
 # Make sure each function only does ONE thing!!!!!!!!!!!
 
 def guess_gender(name):
