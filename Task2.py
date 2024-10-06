@@ -5,6 +5,29 @@ import os, time
 # Help! I'm trying to make this cool bot but my code is too messy :( Please help me organise it into reusable components.
 
 # Define your reusable functions here:
+
+def catfact():
+    joke_resp = requests.get("https://catfact.ninja/fact").json()
+    joke = joke_resp['fact']
+    print("\n###########################")
+    print("CAT FACT:")
+    print(f"\n{joke}\n")
+    print("So interesting isn't it!")
+    print("###########################")
+    return ""
+
+def weather_display(latitude, longitude, area):
+    weather_resp = requests.get(f"https://api.openweathermap.org/data/2.5/weather?lat={latitude}&lon={longitude}&appid=4d30afa58f6f935d861edecad3639cda").json()
+    # print(weather_resp)
+    weather_kelvin = weather_resp["main"]["temp"]
+    # convert to degrees
+    weather_degrees = int(weather_kelvin - 273.15)
+    main_weather_desc = weather_resp["weather"][0]["main"]
+    second_weather_desc = weather_resp["weather"][0]["description"]
+    print(f"\nThe weather in {area}:\n")
+    print(str(weather_degrees) + "℃")
+    print(f"{main_weather_desc} - {second_weather_desc}")
+    return ""
 # Make sure each function only does ONE thing!!!!!!!!!!!
 
 def guess_gender(name):
@@ -51,13 +74,8 @@ def weird_weather_bot():
     input("\nWould you like a cat fact while you wait? ")
     print("Doesn't matter what you think, I'm going to give you one anyway :)")
     time.sleep(3)
-    joke_resp = requests.get("https://catfact.ninja/fact").json()
-    joke = joke_resp['fact']
-    print("\n###########################")
-    print("CAT FACT:")
-    print(f"\n{joke}\n")
-    print("So interesting isn't it!")
-    print("###########################")
+    catfactt = catfact()
+    print(catfactt)
 
     print("\nWaiting 5 seconds for you to read the fact...")
     time.sleep(5)
@@ -67,16 +85,8 @@ def weird_weather_bot():
         time.sleep(1)
         print("...")
 
-    weather_resp = requests.get(f"https://api.openweathermap.org/data/2.5/weather?lat={latitude}&lon={longitude}&appid=4d30afa58f6f935d861edecad3639cda").json()
-    # print(weather_resp)
-    weather_kelvin = weather_resp["main"]["temp"]
-    # convert to degrees
-    weather_degrees = int(weather_kelvin - 273.15)
-    main_weather_desc = weather_resp["weather"][0]["main"]
-    second_weather_desc = weather_resp["weather"][0]["description"]
-    print(f"\nThe weather in {area}:\n")
-    print(str(weather_degrees) + "℃")
-    print(f"{main_weather_desc} - {second_weather_desc}")
+    weather = weather_display(latitude, longitude, area)
+    print(weather)
     print("\nThank you! Bye.")
 
 weird_weather_bot()
@@ -85,8 +95,12 @@ weird_weather_bot()
 # After you have written the reusable functions, answer the following:
 # Questions:
 # 1. What are the preconditions for your code not to break?
+#   You enter a real place for the input of the postcode.
 # 2. Validate the user's input based on your preconditions.
+#   I'm not sure how to validate it as I also don't fully understand how the the code works with the api.
 # 3. Why was it useful to use reusable components in this case? Please mention at least 2 reasons and don't forget to contextualise.
+#   Because the reusable function could be made to check the weather for a different area if it is coded.
+#   Because then we could get another cat fact if we wanted to.
 
 # Further Tasks:
 # 1. Put your functions in seperate appropriate files and import them in.

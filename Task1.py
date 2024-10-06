@@ -1,35 +1,34 @@
 # Help! My code is too messy :( Please help me organise it and extract out the duplications.
 
 # Define your reusable functions here:
-# Make sure each function only does ONE thing!!!!!!!!!!!
-
-
-
-###########################################
-
-def weird_calculation():
-    # get the length and width of the first triangle from the user
-    opp1 = float(input("Enter your first triangle's opposite side length: "))
-    adj1 = float(input("Enter your first triangle's adjacent side length: "))
-
-    # work out the hyp
+def triangle(opp1, adj1):
     import math
     hyp1 = math.sqrt(opp1**2 + adj1**2)
+    return hyp1
 
-    # get the length and width of the second triangle from the user
-    opp2 = float(input("Enter your second triangle's opposite side length: "))
-    adj2 = float(input("Enter your second triangle's adjacent side length: "))
-
-    # work out the hyp
+def weird_calculation():
     import math
-    hyp2 = math.sqrt(opp2**2 + adj2**2)
-
-    # create a third triangle with the hyp1 as the opp and hyp2 as the adj
-    opp3 = hyp1
-    adj3 = hyp2
-    
-    import math
-    hyp3 = math.sqrt(opp3**2 + adj3**2)
+    hyplist = []
+    for i in range(2):
+        while True:
+            try:
+                opp1 = float(input("Enter your first triangle's opposite side length: "))
+            except ValueError:
+                print("Please enter a number.")
+            else:
+                break
+        while True:
+            try:
+                adj1 = float(input("Enter your first triangle's adjacent side length: "))
+            except ValueError:
+                print("Please enter a number.")
+            else:
+                break
+        hyp = triangle(opp1, adj1)
+        hyplist.append(hyp)
+    hyp1 = hyplist[0]
+    hyp2 = hyplist[1]
+    hyp3 = math.sqrt(hyp1**2 + hyp2**2)
     return hyp3
 
 weird_answer = weird_calculation()
@@ -39,8 +38,12 @@ print(weird_answer)
 # After you have written the reusable functions, answer the following:
 # Questions:
 # 1. What are the preconditions for your code not to break?
+#   The triangle lengths have to be numbers and not variables
 # 2. Validate the user's input based on your preconditions.
+#   I did it.
 # 3. Why was it useful to use reusable components in this case? Please mention at least 2 reasons and don't forget to contextualise.
+#   Because it meant we could use the function twice to get the 2 different values of the hypotenuse, which were then used to get the value of the third hypotenuse.
+#   Because it shortened our code by a lot as the parts that needed to be done more than once were removed and put only once.
 
 # Further Tasks:
 # 1. Put your functions in seperate appropriate files and import them in.
